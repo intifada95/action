@@ -1,0 +1,34 @@
+name: Json Placeholder 
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    # Run At 12:00 on every day-of-month.
+    - cron: '0 12 */1 * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup node version
+      uses: actions/setup-node@v1
+      with:
+        node-version: '>=12.14.1'
+    - name: setup yarn
+      uses: borales/actions-yarn@v2.0.0
+      with: 
+        cmd: install
+    - name : run index
+      run : npm start
+    - name: Commit files
+      run: |
+        git config --local user.email "ngauuwww@gmail.com"
+        git config --local user.name "intifada on Github Actions"
+        git add .
+        git commit -m "Update: update data" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
