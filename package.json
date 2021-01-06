@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "axios": "^0.19.2"
+        "axios": "^0.21.1"
     },
     "name": "im-the-the-action-boy",
     "version": "1.0.0",
