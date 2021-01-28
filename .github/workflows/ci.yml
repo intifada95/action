@@ -24,7 +24,7 @@ jobs:
       run : npm start
     - name: Commit files
       run: |
-        git config --local user.email "ngauuwww@gmail.com"
+        git config --local user.email ${{ secrets.MY_EMAIL }}
         git config --local user.name "intifada on Github Actions"
         git pull
         git add .
